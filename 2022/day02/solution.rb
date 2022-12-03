@@ -44,7 +44,10 @@ def main
   puts "Answer (part 2): #{total_points(input, OUTCOMES_PART2)}"
 end
 
-return main unless ENV.fetch("RUN_TEST", nil) == "1"
+unless ENV.fetch("RUN_TEST", nil) == "1"
+  main
+  exit
+end
 
 require "minitest/autorun"
 

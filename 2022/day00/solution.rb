@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def compute(input)
-  0
+  input
 end
 
 def main
@@ -9,7 +9,10 @@ def main
   puts "Answer: #{compute(input)}"
 end
 
-return main unless ENV.fetch("RUN_TEST", nil) == "1"
+unless ENV.fetch("RUN_TEST", nil) == "1"
+  main
+  exit
+end
 
 require "minitest/autorun"
 
