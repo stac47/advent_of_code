@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# A = X = Rock ( 1 point)
+# A = X = Rock (1 point)
 # B = Y = Paper (2 points)
 # C = Z = Scisor (3 points)
 
