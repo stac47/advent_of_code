@@ -56,7 +56,8 @@ class TestSolution < Minitest::Test
     "A Y",
     "B X",
     "C Z"
-  ]
+  ].freeze
+
   def test_example_part1
     assert_equal 15, total_points(INPUT, OUTCOMES_PART1)
   end
