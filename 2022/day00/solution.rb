@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 def part1(input)
-  input
+  0
 end
 
 def part2(input)
-  input
+  0
 end
 
 def main
@@ -23,10 +23,10 @@ require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   def test_part1
-    assert_equal 0, compute(0)
+    assert_equal 1, part1(0)
   end
 
   def test_part2
-    assert_equal 0, compute(0)
+    assert_equal 0, part2(0)
   end
 end
