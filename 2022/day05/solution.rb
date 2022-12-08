@@ -105,7 +105,7 @@ class TestSolution < Minitest::Test
   end
 
   def test_real
-    input = File.open("input.txt").readlines.map(&:chomp)
+    input = File.open("input").readlines.map(&:chomp)
     assert_equal "ZBDRNPMVH", part1(input)
     assert_equal "WDLPFNNNB", part2(input)
   end

@@ -123,7 +123,7 @@ class TestSolution < Minitest::Test
   end
 
   def test_real
-    input = File.open("input.txt").readlines.map(&:chomp)
+    input = File.open("input").readlines.map(&:chomp)
     assert_equal 1825, part1(input)
     assert_equal 235_200, part2(input)
   end
