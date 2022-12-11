@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
+
 # A = X = Rock (1 point)
 # B = Y = Paper (2 points)
 # C = Z = Scisor (3 points)
@@ -38,18 +40,13 @@ def total_points(input, outcomes)
   input.reduce(0) { |memo, line| memo + outcomes[line] }
 end
 
-def main
-  input = ARGF.readlines.map(&:chomp)
-  puts "Answer (part 1): #{total_points(input, OUTCOMES_PART1)}"
-  puts "Answer (part 2): #{total_points(input, OUTCOMES_PART2)}"
+def part1(input)
+  total_points(input, OUTCOMES_PART1)
 end
 
-unless ENV.fetch("RUN_TEST", nil) == "1"
-  main
-  exit
+def part2(input)
+  total_points(input, OUTCOMES_PART2)
 end
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   INPUT = [
@@ -64,5 +61,11 @@ class TestSolution < Minitest::Test
 
   def test_example_part2
     assert_equal 12, total_points(INPUT, OUTCOMES_PART2)
+  end
+
+  def test_real
+    input = File.open("input").readlines.map(&:chomp)
+    assert_equal 11_475, part1(input)
+    assert_equal 16_862, part2(input)
   end
 end

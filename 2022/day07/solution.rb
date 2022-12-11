@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
+
 TOTAL_SIZE = 70_000_000
 NEEDED_SPACE = 30_000_000
 
@@ -154,19 +156,6 @@ def part2(input)
     .min { |lhs, rhs| lhs.size <=> rhs.size }
     .size
 end
-
-def main
-  input = ARGF.readlines.map(&:chomp)
-  puts "Answer (part 1): #{part1(input)}"
-  puts "Answer (part 2): #{part2(input)}"
-end
-
-unless ENV.fetch("RUN_TEST", nil) == "1"
-  main
-  exit
-end
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   INPUT = <<~INPUT

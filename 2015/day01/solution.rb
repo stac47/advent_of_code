@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
+
 def part1(input)
   input.each_char.inject(0) do |memo, action|
     action == "(" ? memo + 1 : memo - 1
@@ -14,17 +16,6 @@ def part2(input)
     memo
   end
 end
-
-def main
-  input = ARGF.readlines.map(&:chomp).first
-  puts "Answer (part 1): #{part1(input)}"
-  puts "Answer (part 2): #{part2(input)}"
-  exit
-end
-
-main unless ENV.fetch("RUN_TEST", nil) == "1"
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   def test_part1
@@ -42,5 +33,11 @@ class TestSolution < Minitest::Test
   def test_part2
     assert_equal 1, part2(")")
     assert_equal 5, part2("()())")
+  end
+
+  def test_real
+    input = File.open("input").readlines.map(&:chomp).first
+    assert_equal 138, part1(input)
+    assert_equal 1771, part2(input)
   end
 end

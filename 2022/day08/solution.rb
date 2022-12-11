@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
+
 class TreeMap
   def initialize(input)
     @map = input.map { |line| line.scan(/\d/).map(&:to_i) }
@@ -91,19 +93,6 @@ end
 def part2(input)
   TreeMap.new(input).highest_scenic_score
 end
-
-def main
-  input = ARGF.readlines.map(&:chomp)
-  puts "Answer (part 1): #{part1(input)}"
-  puts "Answer (part 2): #{part2(input)}"
-end
-
-unless ENV.fetch("RUN_TEST", nil) == "1"
-  main
-  exit
-end
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   INPUT = <<~INPUT

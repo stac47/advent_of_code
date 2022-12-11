@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
+
 def calories(input)
   input.each_with_object([0]) do |cal, memo|
     if cal.empty?
@@ -17,19 +19,6 @@ end
 def part2(input)
   calories(input).sort.reverse[0..2].sum
 end
-
-def main
-  input = ARGF.readlines.map(&:chomp)
-  puts "Answer (part 1): #{part1(input)}"
-  puts "Answer (part 2): #{part2(input)}"
-end
-
-unless ENV.fetch("RUN_TEST", nil) == "1"
-  main
-  exit
-end
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   def test_real

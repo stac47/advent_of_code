@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
 require "set"
 
 class Position
@@ -114,17 +115,6 @@ end
 def part2(input)
   RopeSimulation.new(10).simulate_move(input)
 end
-
-def main
-  input = ARGF.readlines.map(&:chomp)
-  puts "Answer (part 1): #{part1(input)}"
-  puts "Answer (part 2): #{part2(input)}"
-  exit
-end
-
-main unless ENV.fetch("RUN_TEST", nil) == "1"
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   INPUT = <<~INPUT

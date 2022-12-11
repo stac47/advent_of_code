@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
 require "set"
 
 def first_unique_char_sequence(len, line)
@@ -10,19 +11,6 @@ end
 
 def part1(input) = first_unique_char_sequence(4, input)
 def part2(input) = method(:first_unique_char_sequence).curry.call(14).call(input)
-
-def main
-  input = ARGF.readlines.map(&:chomp).first
-  puts "Answer (part 1): #{part1(input)}"
-  puts "Answer (part 2): #{part2(input)}"
-end
-
-unless ENV.fetch("RUN_TEST", nil) == "1"
-  main
-  exit
-end
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   def test_find_marker

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "minitest/autorun"
+
 class Machine
   class Callback
     def initialize(machine)
@@ -159,17 +161,6 @@ end
 def part2(input)
   common_part(input, ScreenCallback)
 end
-
-def main
-  input = ARGF.readlines.map(&:chomp)
-  puts "Answer (part 1): #{part1(input)}"
-  puts "Answer (part 2):\n#{part2(input)}"
-  exit
-end
-
-main unless ENV.fetch("RUN_TEST", nil) == "1"
-
-require "minitest/autorun"
 
 class TestSolution < Minitest::Test
   CRT = <<~CRT
