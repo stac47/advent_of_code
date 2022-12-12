@@ -2,24 +2,17 @@
 
 require "minitest/autorun"
 
-class Item
-  attr_accessor :worry_level
-
-  def initialize(initial_worry_level)
-    @worry_level = initial_worry_level
-  end
-end
+Item = Struct.new("Item", :worry_level)
+Action = Struct.new("Action", :divisor, :if_true, :if_false)
 
 class Monkey
-  Action = Struct.new("Action", :divisor, :if_true, :if_false)
-
-  attr_reader :id, :action, :inspection_number
-  attr_accessor :items, :operation
+  attr_reader :id, :action, :inspection_number, :items
+  attr_accessor :operation
 
   def initialize(id)
     @id = id
     @items = []
-    @operation = ""
+    @operation = nil
     @action = Action.new
     @inspection_number = 0
   end
@@ -41,7 +34,7 @@ class Game
       when /Monkey (\d+)/
         current_monkey = Monkey.new(Regexp.last_match(1).to_i)
       when /  Starting items: (.*)/
-        current_monkey.items = Regexp.last_match(1).split(", ").map { |wl| Item.new(wl.to_i) }
+        current_monkey.items.concat(Regexp.last_match(1).split(", ").map { |wl| Item.new(wl.to_i) })
       when /  Operation: new = (.*)/
         current_monkey.operation = Regexp.last_match(1)
       when /  Test: divisible by (\d+)/
