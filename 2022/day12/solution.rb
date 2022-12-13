@@ -159,8 +159,11 @@ class TestSolution < Minitest::Test
     assert_equal 29, part2(EXAMPLE.split("\n"))
   end
 
-  def test_real
+  def test_part1_real
     assert_equal 352, part1(REAL)
+  end
+
+  def test_part2_real
     assert_equal 345, part2(REAL)
   end
 end
