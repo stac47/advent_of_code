@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 require "minitest/autorun"
+require "logger"
+
+LOGGER = Logger.new($stderr)
+LOGGER.level = Logger::DEBUG
 
 def part1(input)
   0
